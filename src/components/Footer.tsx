@@ -1,3 +1,5 @@
+import porscheLogo from "@/assets/porsche-logo.png";
+
 const footerColumns = [
   {
     title: "Models",
