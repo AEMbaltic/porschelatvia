@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import HeroCarousel from "@/components/HeroCarousel";
+import VideoScrollBanner from "@/components/VideoScrollBanner";
 import QuickLinks from "@/components/QuickLinks";
 import Footer from "@/components/Footer";
 
@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <HeroCarousel />
+      <VideoScrollBanner />
       <QuickLinks />
       <Footer />
     </div>
