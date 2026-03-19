@@ -1,5 +1,5 @@
 import { Menu, MapPin } from "lucide-react";
-import porscheLogo from "@/assets/porsche-logo.jpg";
+import porscheLogo from "@/assets/porsche-logo.png";
 
 const Navbar = () => {
   return (
