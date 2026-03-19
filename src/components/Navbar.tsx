@@ -11,9 +11,7 @@ const Navbar = () => {
         </button>
 
         <div className="absolute left-1/2 -translate-x-1/2">
-          <h1 className="text-lg sm:text-xl font-bold tracking-[0.35em] text-foreground">
-            PORSCHE
-          </h1>
+          <img src={porscheLogo} alt="Porsche" className="h-10 sm:h-12 w-auto" />
         </div>
 
         <div className="flex items-center gap-2 text-foreground">
