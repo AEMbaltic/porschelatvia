@@ -1,3 +1,5 @@
+import porscheLogo from "@/assets/porsche-logo.png";
+
 const footerColumns = [
   {
     title: "Models",
@@ -44,7 +46,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xl font-bold tracking-[0.35em]">PORSCHE</p>
+          <img src={porscheLogo} alt="Porsche" className="h-6 w-auto invert" />
           <div className="flex items-center gap-6">
             <a href="#" className="text-xs font-light opacity-50 hover:opacity-100 transition-opacity">
               Legal Notice
