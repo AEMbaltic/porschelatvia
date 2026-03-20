@@ -17,10 +17,13 @@ const VideoScrollBanner = () => {
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    // Size canvas to fill screen
+    // Size canvas to fill screen at native pixel density (fixes blur on HiDPI)
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.round(window.innerWidth * dpr);
+      canvas.height = Math.round(window.innerHeight * dpr);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
       drawFrame(currentFrameRef.current < 0 ? 0 : currentFrameRef.current);
     };
 
