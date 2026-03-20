@@ -9,17 +9,35 @@ const VideoScrollBanner = () => {
     const container = containerRef.current;
     if (!video || !container) return;
 
-    const handleScroll = () => {
+    const updateTime = () => {
+      if (!video.duration) return;
       const scrolled = -container.getBoundingClientRect().top;
       const scrollable = container.offsetHeight - window.innerHeight;
       const progress = Math.max(0, Math.min(1, scrolled / scrollable));
-      if (video.duration) {
-        video.currentTime = progress * video.duration;
+      video.currentTime = progress * video.duration;
+    };
+
+    const onLoadedMetadata = () => {
+      // Play then immediately pause to unlock seeking in all browsers
+      const p = video.play();
+      if (p !== undefined) {
+        p.then(() => {
+          video.pause();
+          video.currentTime = 0;
+          updateTime();
+        }).catch(() => {
+          video.currentTime = 0;
+        });
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    window.addEventListener("scroll", updateTime, { passive: true });
+
+    return () => {
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      window.removeEventListener("scroll", updateTime);
+    };
   }, []);
 
   return (
